@@ -1,0 +1,118 @@
+<html lang="en" data-lt-script-installed="true" class="logged-out linux-os" data-country="IN">
+    
+<head>
+
+<title>INFO RETRIVAL- &amp; Spell Checker</title>
+
+<link href="https://languagetool.org/css/_new/app.css?id=f2be36c676e434379512" rel="stylesheet">
+<script src="https://languagetool.org/js/_new/manifest.js?id=7db827d654313dce4250" defer></script>
+<script src="https://languagetool.org/js/_new/react.bundle.js?id=ea5d1dc7cbe4748f3bc7" defer></script>
+<script src="https://languagetool.org/js/_new/app-en.js?id=8be0de8aa1f8cf934de9" defer></script>
+
+</head>
+    
+<body>
+    <style>
+        .black {
+            color: black;
+        }
+        textarea, select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+        
+        .green[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        .green[type=submit]:hover {
+          background-color: #45a049;
+        }
+        
+        .red[type=submit] {
+          width: 100%;
+          background-color: #df0000;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        .red[type=submit]:hover {
+          background-color: #5a0005;
+        }
+
+        .box {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+        </style>
+        <div class="page--background"></div>
+        <div class="page">
+            <header id="primary-website-header" class="header">
+
+    
+    </header>
+
+            <section class="content">
+                <div class="hero-banner--welcome">
+    <h1 class="headline headline--title center">INFO RETRIVAL PROJECT</h1>
+            <div id="sign-up-link" class="btn-wrapper">
+            <a data-track-click="WelcomePage|sign_up|header" class="btn btn--sign-up btn--prominent"></i></a>
+        </div>
+    
+    <div class="box">
+        <label for="story" class="black content">Write normal text here, wrong spellings will be autocorrected:</label>
+                        <section class="welcome-editor"><form action="/finderrors">
+                            <textarea id="original" name="original" rows="5" cols="33">Enter the text here you want to check.</textarea>
+ 
+                              <input type="submit" class="green" value="Submit">
+                            </form>
+                            <div id="recommendations">
+                            <form  action="/commit">
+                                <select name="cars" id="cars">
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                  </select>
+     
+                                  <input type="submit" class="red" value="Commit recommended changes">
+                                </form>
+                              </div>
+                            </section>
+    </div>
+</div>
+
+<script>
+  function hideCommit() {
+                            var x = document.getElementById("recommendations");
+                            if (x.style.display === "none") {
+                              x.style.display = "block";
+                            } else {
+                              x.style.display = "none";
+                            }
+                          }
+  var showCommit = "{{error}}";
+  if(showCommit!=true){
+    hideCommit();
+  }
+
+</script>
+    </body>
+</html>
