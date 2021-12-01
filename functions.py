@@ -4,20 +4,23 @@ import nltk
 from nltk.corpus import words
 correct_spellings = words.words()
 
-def edit_distance(entries):
+def Jaccard_fourgram(entries):
 
     # get first letter of each word with c
     c = [i for i in correct_spellings if i[0]==entries[0]]
     # calculate the distance of each word with entry and link both together
-    one = [(nltk.jaccard_distance(set(nltk.ngrams(entries, n=4)), \
-                                  set(nltk.ngrams(a, n=4))), a) for a in c]
+    try:
+        one = [(nltk.jaccard_distance(set(nltk.ngrams(entries, n=4)), \
+                                    set(nltk.ngrams(a, n=4))), a) for a in c]
+    except:
+        return entries
     output = sorted(one)[0][1]
 
     return output
 
-print(edit_distance('ambulanc'))
 
-def Jaccard_fourgram(entries):
+
+def edit_distance(entries):
 
     # get first letter of each word with c
     c = [i for i in correct_spellings if i[0]==entries[0]]
@@ -30,7 +33,7 @@ def Jaccard_fourgram(entries):
 
     return output
 
-print(Jaccard_fourgram('ambulantce'))
+print(edit_distance("onj"))
 
 def Jaccard_trigram(entries):
     # get first letter of each word with c
@@ -45,7 +48,7 @@ def Jaccard_trigram(entries):
 
     return output
 
-print(Jaccard_trigram('ambulantce'))
+
 
 def compare_full(orignal,tocompare):
     i = len(orignal)
@@ -70,4 +73,3 @@ def autocomplete(entries):
 
     return output
 
-print(autocomplete("eavesd"))

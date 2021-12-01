@@ -16,22 +16,36 @@ def index():
 @views.route("/finderrors", Method=['GET','POST'])
 def home():
     textfile = request.args['original']
-    inputwords = split(textfile," ")
+    mode = request.args['mode']
+
+    inputwords = textfile.split()
+    
     dict = {}
     for i in inputwords:
-        if i not in correct_spellings:
-            if(i.__contains__('_')):
-                entry = i.split('_')[0]
-                dict[i] = functions.autocomplete(entry)
-            else:
-                spellbee = []
-                edit = functions.edit_distance(i)
-                trigram = functions.Jaccard_trigram(i)
-                fourgram = functions.Jaccard_fourgram(i)
-                spellbee.append(edit)
-                spellbee.append(trigram)
-                spellbee.append(fourgram)
-                dict[i] = spellbee
+        if i not in ['.','?','!',',']:
+            i = i.strip('.')
+            i = i.strip('?')
+            i = i.strip('!')
+            i = i.strip(',')
 
-    return render_template("index.html")
+            if i not in correct_spellings:
+                print(i)
+                if(i.__contains__('_')):
+                    entry = i.split('_')[0]
+                    print(functions.autocomplete(entry))
+                    dict[i] = functions.autocomplete(entry)
+                else:
+                    if mode==1:
+                        spellbee = functions.edit_distance(i)
+                    if mode ==2:
+                        spellbee = functions.Jaccard_trigram(i)
+                    if mode == 3:
+                        spellbee = functions.Jaccard_fourgram(i)
+                    print(spellbee)
+                    dict[i] = spellbee
+
+    for word, value in dict.items():
+        textfile = textfile.replace(word,value)
+
+    return render_template("index.html", inp = textfile)
  

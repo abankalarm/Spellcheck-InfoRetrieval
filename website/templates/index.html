@@ -77,42 +77,35 @@
         </div>
     
     <div class="box">
-        <label for="story" class="black content">Write normal text here, wrong spellings will be autocorrected:</label>
+        <label for="story" class="black content">Write normal text here, wrong spellings will be autocorrected:</label><br>
+        <label for="story" class="black content">For auto completion, enter text like: autocompl_  for the word autocomplete</label><br><br>
+        <label for="story" class="black content">
+        Example Text: copy this<br>
+        helllo, I thouggt you could use some medici_, do you need help? you loook injuread</label>
                         <section class="welcome-editor"><form action="/finderrors">
-                            <textarea id="original" name="original" rows="5" cols="33">Enter the text here you want to check.</textarea>
- 
+                            <textarea id="original" name="original" rows="5" cols="33"></textarea>
+                            <select name="made" id="mode">
+                              <option value="1">Edit-distance</option>
+                              <option value="2">Trigram</option>
+                              <option value="3">4gram</option>
+                              
+                            </select>
                               <input type="submit" class="green" value="Submit">
                             </form>
                             <div id="recommendations">
-                            <form  action="/commit">
-                                <select name="cars" id="cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="opel">Opel</option>
-                                    <option value="audi">Audi</option>
-                                  </select>
-     
-                                  <input type="submit" class="red" value="Commit recommended changes">
-                                </form>
+                            
                               </div>
                             </section>
     </div>
 </div>
 
 <script>
-  function hideCommit() {
-                            var x = document.getElementById("recommendations");
-                            if (x.style.display === "none") {
-                              x.style.display = "block";
-                            } else {
-                              x.style.display = "none";
-                            }
-                          }
-  var showCommit = "{{error}}";
-  if(showCommit!=true){
-    hideCommit();
+  var inputt = "{{inp}}";
+  if(inputt.length<8){
+    inputt = "Enter the text here you want to check."
   }
-
+  document.getElementById('original').value = inputt;
+    
 </script>
     </body>
 </html>
