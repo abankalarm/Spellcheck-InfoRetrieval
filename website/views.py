@@ -4,7 +4,7 @@ import functions
 
 views = Blueprint("views", __name__)
 import nltk
-# nltk.download('words')
+nltk.download('words')
 
 from nltk.corpus import words
 correct_spellings = words.words()
@@ -13,7 +13,7 @@ correct_spellings = words.words()
 def index():
     return render_template("index.html", error = False)
 
-@views.route("/finderrors", Method=['GET','POST'])
+@views.route("/finderrors", methods=['GET','POST'])
 def home():
     textfile = request.args['original']
     mode = request.args['mode']
@@ -35,17 +35,18 @@ def home():
                     print(functions.autocomplete(entry))
                     dict[i] = functions.autocomplete(entry)
                 else:
-                    if mode==1:
+                    spellbee = 'error'
+                    if mode=='1':
                         spellbee = functions.edit_distance(i)
-                    if mode ==2:
+                    if mode =='2':
                         spellbee = functions.Jaccard_trigram(i)
-                    if mode == 3:
+                    if mode == '3':
                         spellbee = functions.Jaccard_fourgram(i)
                     print(spellbee)
                     dict[i] = spellbee
 
     for word, value in dict.items():
         textfile = textfile.replace(word,value)
-
+    print(textfile)
     return render_template("index.html", inp = textfile)
  

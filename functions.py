@@ -1,5 +1,5 @@
 import nltk
-# nltk.download('words')
+nltk.download('words')
 
 from nltk.corpus import words
 correct_spellings = words.words()
